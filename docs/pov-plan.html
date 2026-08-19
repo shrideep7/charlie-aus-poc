@@ -1,0 +1,492 @@
+<title>Charli Proof of Value</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  /* ── Light palette: sandstone ground, slate ink, brass accent ─────────── */
+  :root {
+    --ground:   #FBFAF7;
+    --surface:  #FFFFFF;
+    --sunk:     #F4F2EC;
+    --ink:      #191C22;
+    --muted:    #5C6270;
+    --faint:    #8A8F9B;
+    --hairline: #E4E0D7;
+    --rule:     #CFCABD;
+    --accent:   #8A5D22;
+    --accent-2: #B8823C;
+    --slate:    #202A3C;
+    --ok:       #2F6B4F;
+    --warn:     #8F5410;
+    --crit:     #8C3A2E;
+    --shadow:   0 1px 2px rgba(25,28,34,.05), 0 8px 24px -16px rgba(25,28,34,.18);
+
+    --display: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:   #14161B;
+      --surface:  #1B1E25;
+      --sunk:     #21252D;
+      --ink:      #EDEBE5;
+      --muted:    #A2A8B4;
+      --faint:    #7C828E;
+      --hairline: #2A2E37;
+      --rule:     #3A3F4A;
+      --accent:   #D3A25E;
+      --accent-2: #E0B478;
+      --slate:    #C6D0E0;
+      --ok:       #6FB894;
+      --warn:     #D9A45C;
+      --crit:     #DB8A7C;
+      --shadow:   0 1px 2px rgba(0,0,0,.4), 0 8px 28px -18px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:   #14161B;
+    --surface:  #1B1E25;
+    --sunk:     #21252D;
+    --ink:      #EDEBE5;
+    --muted:    #A2A8B4;
+    --faint:    #7C828E;
+    --hairline: #2A2E37;
+    --rule:     #3A3F4A;
+    --accent:   #D3A25E;
+    --accent-2: #E0B478;
+    --slate:    #C6D0E0;
+    --ok:       #6FB894;
+    --warn:     #D9A45C;
+    --crit:     #DB8A7C;
+    --shadow:   0 1px 2px rgba(0,0,0,.4), 0 8px 28px -18px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.75rem 6rem; }
+
+  /* ── Masthead ─────────────────────────────────────────────────────────── */
+  header.mast {
+    border-bottom: 1px solid var(--rule);
+    padding: 3.5rem 0 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1rem;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    text-wrap: balance;
+    margin: 0 0 .6rem;
+  }
+  .standfirst {
+    font-family: var(--display);
+    font-size: clamp(1.05rem, 2vw, 1.28rem);
+    line-height: 1.5;
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0 0 2rem;
+  }
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2.5rem;
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.25rem;
+  }
+  .fact { display: flex; flex-direction: column; gap: .15rem; padding: .25rem 0; }
+  .fact dt {
+    font-family: var(--mono);
+    font-size: .66rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .fact dd { margin: 0; font-weight: 500; font-size: .95rem; font-variant-numeric: tabular-nums; }
+
+  /* ── Sections ─────────────────────────────────────────────────────────── */
+  section { margin: 0 0 3.25rem; }
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.55rem;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+    margin: 0 0 .35rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  h3 {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: .8rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 2rem 0 .75rem;
+  }
+  .lede { color: var(--muted); max-width: 66ch; margin: .9rem 0 1.5rem; }
+  p { max-width: 68ch; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  /* ── Tables ───────────────────────────────────────────────────────────── */
+  .scroll { overflow-x: auto; margin: 1.25rem 0; border: 1px solid var(--hairline); background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 34rem; }
+  th, td { text-align: left; padding: .7rem .95rem; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  thead th {
+    font-family: var(--mono);
+    font-size: .66rem;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: var(--faint);
+    font-weight: 500;
+    background: var(--sunk);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+  code, .ref {
+    font-family: var(--mono);
+    font-size: .84em;
+    background: var(--sunk);
+    padding: .1em .38em;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .ref { color: var(--accent); font-weight: 500; }
+
+  /* ── Verb / surface cards ─────────────────────────────────────────────── */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    padding: 1.1rem 1.15rem;
+    box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: .4rem;
+  }
+  .card .who {
+    font-family: var(--mono); font-size: .64rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .card strong { font-family: var(--display); font-size: 1.12rem; font-weight: 600; }
+  .card p { margin: 0; font-size: .88rem; color: var(--muted); max-width: none; }
+
+  /* ── Turn map ─────────────────────────────────────────────────────────── */
+  .turns { display: flex; flex-direction: column; gap: 0; margin: 1.25rem 0; border-left: 2px solid var(--rule); }
+  .turn { display: grid; grid-template-columns: 3.4rem 1fr; gap: 1rem; padding: 1rem 0 1rem 1.25rem; border-bottom: 1px solid var(--hairline); }
+  .turn:last-child { border-bottom: 0; }
+  .turn .n {
+    font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--faint); padding-top: .25rem;
+  }
+  .turn .body strong { display: block; font-weight: 600; margin-bottom: .2rem; }
+  .turn .body span { display: block; font-size: .86rem; color: var(--muted); }
+  .turn .body .out { margin-top: .4rem; }
+
+  /* ── Quote / safety ───────────────────────────────────────────────────── */
+  blockquote {
+    margin: 1.25rem 0;
+    padding: 1rem 1.25rem;
+    background: var(--sunk);
+    border-left: 3px solid var(--accent);
+    font-family: var(--display);
+    font-size: 1.05rem;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+  blockquote cite { display: block; margin-top: .5rem; font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-style: normal; }
+
+  /* ── Pills ────────────────────────────────────────────────────────────── */
+  .pill {
+    display: inline-block; font-family: var(--mono); font-size: .66rem;
+    letter-spacing: .08em; text-transform: uppercase; padding: .15rem .45rem;
+    border: 1px solid currentColor; border-radius: 2px; white-space: nowrap;
+  }
+  .pill.high { color: var(--crit); }
+  .pill.med  { color: var(--warn); }
+  .pill.low  { color: var(--ok); }
+
+  /* ── Not-building list ────────────────────────────────────────────────── */
+  .exclude { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.25rem 0; padding: 0; list-style: none; }
+  .exclude li {
+    font-size: .84rem; color: var(--muted);
+    border: 1px dashed var(--rule); padding: .3rem .6rem; background: var(--surface);
+  }
+
+  ul.plain { padding-left: 1.1rem; max-width: 68ch; }
+  ul.plain li { margin-bottom: .45rem; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    margin-top: 4rem; padding-top: 1.25rem;
+    font-family: var(--mono); font-size: .7rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--faint);
+    display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between;
+  }
+
+  @media (max-width: 34rem) {
+    .turn { grid-template-columns: 1fr; gap: .35rem; }
+    .facts { gap: 0 1.5rem; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Proof of Value · Build Plan</p>
+    <h1>Charli at 1 Martin Place</h1>
+    <p class="standfirst">An after-hours digital concierge. One conversational front door for tenants when the concierge desk is dark — answering, coordinating, transacting and handing off.</p>
+    <dl class="facts">
+      <div class="fact"><dt>Demo</dt><dd>Wed 26 Aug 2026</dd></div>
+      <div class="fact"><dt>Freeze</dt><dd>Tue 25 Aug, 4pm</dd></div>
+      <div class="fact"><dt>Build</dt><dd>5 working days</dd></div>
+      <div class="fact"><dt>Team</dt><dd>1 full-stack engineer</dd></div>
+      <div class="fact"><dt>Source</dt><dd>Charli Demo Pack, 184 lines</dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2>What they actually asked for</h2>
+    <p class="lede">The brief is unusually precise, and it is not a request for software capability. It is a test of a service proposition: <em>when the desk is unattended at 7pm, can one agent hold the entire tenant relationship without the tenant learning three different systems?</em></p>
+    <p>One line of the brief carries the whole specification — Charli should “understand natural-language requests, provide immediate assistance, coordinate simple related tasks, make simulated bookings/requests and connect tenants to the appropriate support pathway.” Five verbs. Every part of the demo exists to make one of them visible.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Verb</th><th>How the demo proves it</th></tr></thead>
+        <tbody>
+          <tr><td>Understands natural language</td><td>Free-text input, no menu required; four intents parsed from one sentence</td></tr>
+          <tr><td>Provides immediate assistance</td><td>Building knowledge answered from the cached prompt — no round trip, no waiting</td></tr>
+          <tr><td>Coordinates related tasks</td><td>The hero journey: room, guest passes, breakfast and an airport taxi from one request</td></tr>
+          <tr><td>Makes simulated bookings</td><td>Four reference families — <span class="ref">BK</span> <span class="ref">CH</span> <span class="ref">CS</span> <span class="ref">VA</span></td></tr>
+          <tr><td>Connects to the right pathway</td><td>Five simulated teams, four escalation tiers, correct routing every time</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The brief also grants an explicit licence — <em>“not to replicate current operating procedures or build a production-ready solution”</em> — and rules out every integration, authentication, live data and analytics. We should take that licence in full. The bar is believability and clarity of the service model, not correctness. No database, no login, no external systems.</p>
+  </section>
+
+  <section>
+    <h2>Three surfaces, one configuration</h2>
+    <p class="lede">The brief asks for a standalone experience “configured for 1 Martin Place”. That phrase is load-bearing: the asset, service menu, room catalogue, teams and recommendations are configuration, not code — and a presenter screen exists purely to show that configuration.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="who">Tenant</span>
+        <strong>Charli chat</strong>
+        <p>Mobile-first conversation with rich cards for room options, confirmations, guidance and the closing itinerary. Warm, concise, never a technical caveat.</p>
+      </div>
+      <div class="card">
+        <span class="who">Presenter only</span>
+        <strong>Trace panel</strong>
+        <p>Per turn: intents, extracted entities, confidence, rules applied, actions, outcome — plus urgency, destination team and hand-off summary on escalations.</p>
+      </div>
+      <div class="card">
+        <span class="who">Presenter only · static</span>
+        <strong>Configuration view</strong>
+        <p>Asset, operating model, enabled services, room catalogue and rules, escalation teams, recommendation set. Rendered from the live config objects. No editor.</p>
+      </div>
+    </div>
+    <p>Because all three read the same five data modules, the closing line of the demo is true rather than aspirational: <strong>a second building is a new configuration file, not a new build.</strong></p>
+  </section>
+
+  <section>
+    <h2>How it is built</h2>
+    <p class="lede">One Next.js application in TypeScript. Three routes, static data, and a streaming agent endpoint running Claude Opus 5 with six tools. Deployed to a single URL, with a local build held in reserve.</p>
+
+    <h3>Six tools — deliberately small</h3>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Tool</th><th>Role</th><th>Why it is designed this way</th></tr></thead>
+        <tbody>
+          <tr><td><code>record_trace</code></td><td>Captures intents, entities, confidence, rules</td><td><strong>Forced as the first call every turn.</strong> Makes an untraced turn structurally impossible — the trace panel is half of what this PoV sells.</td></tr>
+          <tr><td><code>find_spaces</code></td><td>Filters the five-room catalogue</td><td>Real capacity, rule and availability logic, so “that one’s unavailable — here’s the next best option” emerges rather than being scripted.</td></tr>
+          <tr><td><code>create_booking</code></td><td>Issues <span class="ref">BK-MP-####</span></td><td>Only after explicit confirmation.</td></tr>
+          <tr><td><code>submit_service_request</code></td><td><strong>The one generic handler</strong> for every non-booking request</td><td>Mandated by the brief. Uses the client’s own service schema, so the config screen shows them their own JSON.</td></tr>
+          <tr><td><code>lookup_request_status</code></td><td>Pre-seeded case lookup</td><td>Answers “what’s happening with my lighting request?” from a cold session.</td></tr>
+          <tr><td><code>escalate</code></td><td>Returns the brief’s safety copy verbatim</td><td>See below — this one is not negotiable.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Two decisions that protect the demo</h3>
+    <p><strong>Safety copy is deterministic, never generated.</strong> The brief quotes four escalation scripts word for word, including an emergency script that instructs the tenant to call <strong>000</strong>. A model asked to “say this” will paraphrase it roughly one time in ten. Paraphrasing an emergency instruction, on stage, in front of a client holding the exact wording, is the worst failure available to us. The model chooses the tier; the copy is substituted in code.</p>
+    <blockquote>
+      Please call 000 now and move to a safe area if you can. I’m alerting Building Support and recording your location as [location].
+      <cite>Emergency tier — emitted byte-identical, asserted by test</cite>
+    </blockquote>
+    <p><strong>Reference numbers are pre-seeded to match the client’s document.</strong> The brief’s own worked examples use <span class="ref">BK-MP-1042</span>, <span class="ref">VA-MP-1051</span>, <span class="ref">CS-MP-4108</span> and <span class="ref">CH-MP-3018</span>. The allocator serves exactly those first. When the hero journey runs, the numbers on screen match the numbers in their pack — a thirty-minute build, and the detail that tells the room we read all 184 lines.</p>
+  </section>
+
+  <section>
+    <h2>The hero journey</h2>
+    <p class="lede">One utterance, four intents. The brief allows seven conversational turns; we land it in five by pairing each question with the previous step’s result.</p>
+    <blockquote>
+      I have six interstate clients arriving at 8am tomorrow. Please arrange a room, organise guest passes, recommend breakfast nearby, and book a taxi to the airport for one guest after the meeting.
+      <cite>Opening request</cite>
+    </blockquote>
+    <div class="turns">
+      <div class="turn">
+        <span class="n">Turn 1</span>
+        <span class="body"><strong>Names all four parts back; asks duration only</strong>
+        <span>Multi-intent recognition, and asking for nothing it already knows.</span></span>
+      </div>
+      <div class="turn">
+        <span class="n">Turn 2</span>
+        <span class="body"><strong>Recommends Park Meeting Room 08:00–09:30, alternative The Forum</strong>
+        <span>Quiet Room fails on capacity, Pitt opens at 09:00, Martin Boardroom is blocked until 10:00 — only Park works. The approval rule on The Forum is surfaced, not hidden.</span></span>
+      </div>
+      <div class="turn">
+        <span class="n">Turn 3</span>
+        <span class="body"><strong>Books it; asks for guest names and companies</strong>
+        <span class="out"><span class="ref">BK-MP-1042</span></span></span>
+      </div>
+      <div class="turn">
+        <span class="n">Turn 4</span>
+        <span class="body"><strong>Passes ready; two breakfast options; proposes a 09:45 pickup and asks only for the terminal</strong>
+        <span>The 09:45 is inferred from the 09:30 finish rather than asked for. This is the moment the room leans forward — rehearse it.</span>
+        <span class="out"><span class="ref">VA-MP-1051</span></span></span>
+      </div>
+      <div class="turn">
+        <span class="n">Turn 5</span>
+        <span class="body"><strong>Taxi arranged; one concise itinerary carrying every reference</strong>
+        <span class="out"><span class="ref">CS-MP-4108</span></span></span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Acceptance criteria, and how each is evidenced</h2>
+    <p class="lede">The brief lists eight criteria. Each is covered by a golden-transcript test that replays the client’s own prompts — 17 prepared asks and 11 supporting prompts — and asserts the outcome. The test report is a demo deliverable, not just an internal artefact.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Criterion</th><th>Satisfied by</th><th>Asserted</th></tr></thead>
+        <tbody>
+          <tr><td>Hero journey in ≤7 turns</td><td>Locked five-turn map</td><td>Build fails on turn 8</td></tr>
+          <tr><td>Multiple intents; asks only what is missing</td><td>Required-field diffing in the service registry</td><td>≥4 intents; no field re-asked</td></tr>
+          <tr><td>Room plus an alternative, using capacity, rules, availability</td><td>Real filters over the sandbox catalogue</td><td>Two distinct spaces with rule badges</td></tr>
+          <tr><td>Booking, guest/access, support and concierge references</td><td>Four-family allocator</td><td>One valid reference per family</td></tr>
+          <tr><td>Answers ≥10 common requests</td><td>All 17 prepared asks implemented</td><td>Full replay</td></tr>
+          <tr><td>Access, support, approval, security and emergency routing</td><td>Four escalation tiers, five teams</td><td>Byte-identical copy, correct team</td></tr>
+          <tr><td>Status follow-up from pre-seeded data</td><td>Four seeded cases including <span class="ref">CH-MP-3018</span></td><td>Answered from a cold session</td></tr>
+          <tr><td>Trace panel shows intent, entities, confidence, actions, outcome</td><td>Forced <code>record_trace</code></td><td>All eight fields populated, every turn</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Schedule</h2>
+    <p class="lede">Five working days with the weekend held clear as buffer, not as plan. Everything the demo depends on is standing by Friday; Monday is polish and insurance.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Day</th><th>Date</th><th>Standing at end of day</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="num">Wed 19 Aug</td><td>Scaffold, all five data modules from the brief’s tables, system prompt v1, streaming endpoint with tracing and escalation. Knowledge questions answered end to end.</td></tr>
+          <tr><td class="num">2</td><td class="num">Thu 20 Aug</td><td>Booking flow, generic service handler, status lookup. All four reference families issuing. Golden suite green on the 17 prepared asks. <strong>Content pack sent for sign-off.</strong></td></tr>
+          <tr><td class="num">3</td><td class="num">Fri 21 Aug</td><td>Hero journey tuned to five turns and locked. Trace panel complete. Escalation copy verified. First UI polish pass.</td></tr>
+          <tr><td class="num">4</td><td class="num">Mon 24 Aug</td><td>Configuration view, guidance and recommendation cards with final content, rails mode, deployed. Full golden run green.</td></tr>
+          <tr><td class="num">5</td><td class="num">Tue 25 Aug</td><td>Two dry runs, fix list closed, <strong>freeze at 4pm</strong>, run-of-show rehearsed, backup recording made, offline build prepared.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Four cheap insurances</h3>
+    <ul class="plain">
+      <li><strong>Golden transcript harness</strong> — replays every prompt in the client’s pack and asserts routes, reference formats, verbatim safety copy, turn counts and the absence of hedging language. Runs the morning of the demo.</li>
+      <li><strong>Rails mode</strong> — deterministic canned playback of the hero journey and the top eight prompts, no API calls. If the venue network drops mid-demo, the presenter switches and nobody in the room knows.</li>
+      <li><strong>Presenter reset</strong> — clears the session and re-seeds references, so the hero journey runs cleanly twice. It will need to.</li>
+      <li><strong>Recorded backup</strong> — four minutes of hero journey and one escalation, on the laptop. Twenty minutes to make.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Run of show</h2>
+    <p class="lede">Twelve minutes, then questions. The trace panel is held back deliberately — it is the turn where a chatbot becomes a service model.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Min</th><th>Beat</th><th>What the room sees</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0–1</td><td>Set the scene</td><td>7pm, desk unattended, clients arriving at 8am tomorrow.</td></tr>
+          <tr><td class="num">1–4</td><td>Hero journey</td><td>One sentence in; four coordinated tasks and a full itinerary out. No menus touched.</td></tr>
+          <tr><td class="num">4–6</td><td>Breadth</td><td>After-hours access, showers and lockers, EV charging, charger loan, quiet business lunch — instant and on-brand.</td></tr>
+          <tr><td class="num">6–8</td><td>Rules and friction</td><td>A room for twelve tomorrow morning is unavailable; the next best option arrives with its approval rule attached.</td></tr>
+          <tr><td class="num">8–9</td><td>Escalation</td><td>Water ingress on level 17, then smoke in a corridor. Unhurried, exact wording. The trust moment.</td></tr>
+          <tr><td class="num">9–10</td><td>Continuity</td><td>“What’s happening with my lighting request?” — answered from a cold session.</td></tr>
+          <tr><td class="num">10–11</td><td>Trace panel</td><td>Replay the hero turn: intents, entities, confidence, rules, actions, outcome.</td></tr>
+          <tr><td class="num">11–12</td><td>Configuration</td><td>“Everything you just saw is this config.” Close.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <blockquote>
+      This is the tenant experience and the service model. What turns it into production is replacing six simulated routes with six real ones — the conversation layer doesn’t change.
+      <cite>Closing line</cite>
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>Deliberately not building</h2>
+    <p class="lede">The brief excludes these, and the last guardrail forbids adding anything that does not replace something already in scope. Agreeing the list in advance means an in-room request becomes a production-phase conversation rather than a scope change four days before the demo.</p>
+    <ul class="exclude">
+      <li>Login or SSO</li><li>Tenant profiles</li><li>Any live integration</li><li>Interactive map or wayfinding</li><li>Payments</li><li>Analytics dashboard</li><li>Admin or config editor</li><li>Voice input</li><li>Mobile app</li><li>Multi-building switcher</li><li>Notifications or email</li><li>A second hero journey</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Risks</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td>Model paraphrases the emergency script</td><td><span class="pill high">High if generated</span></td><td>Copy deterministic in <code>escalate</code>; asserted byte-identical</td></tr>
+          <tr><td>Charli hedges — “in a real system I’d…”</td><td><span class="pill med">Medium</span></td><td>Hard negative prompt rule; test greps for hedging language</td></tr>
+          <tr><td>Hero journey creeps past seven turns</td><td><span class="pill med">Medium</span></td><td>Turn map locked Friday; build fails on turn 8</td></tr>
+          <tr><td>Venue network or API hiccup mid-demo</td><td><span class="pill med">Medium</span></td><td>Rails mode, local build, recorded backup</td></tr>
+          <tr><td>Recommendation content not signed off in time</td><td><span class="pill med">Medium</span></td><td>Sent Thursday; clearly-marked demo content is permitted by the brief</td></tr>
+          <tr><td>In-room scope creep</td><td><span class="pill high">High</span></td><td>The not-building list is agreed in advance</td></tr>
+          <tr><td>Demo brought forward to Monday</td><td><span class="pill low">Low</span></td><td>Days 1–3 already carry the hero journey, trace panel and escalations</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Six questions for the client</h2>
+    <p class="lede">None of these block the build — we proceed on the stated assumption in each case, and each is a two-minute confirmation.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Question</th><th>Our assumption</th></tr></thead>
+        <tbody>
+          <tr><td>The hero journey needs a room for six at 08:00, but Pitt Collaboration Room opens at 09:00 and Martin Boardroom is blocked until 10:00 — so the only alternative to Park Meeting Room is The Forum, which requires approval. Confirm, or shift Pitt’s window?</td><td>We offer The Forum and surface the approval rule — it demonstrates rule handling as a bonus.</td></tr>
+          <tr><td>“I smell smoke in the corridor” — emergency tier, or urgent building issue?</td><td>Emergency tier. The 000 script first, then we ask for the level to complete the location.</td></tr>
+          <tr><td>The local-recommendation set is referenced but not supplied.</td><td>We author three per category as Sydney CBD demo content and send it Thursday for sign-off.</td></tr>
+          <tr><td>Only one pre-seeded status case is given.</td><td>We seed four — lighting, HVAC, access pass, cleaning — so a status question lands from any angle.</td></tr>
+          <tr><td>“One question at a time” against the seven-turn ceiling.</td><td>One question per turn, paired with the previous step’s result. Satisfies both; lands the journey in five.</td></tr>
+          <tr><td>Brand assets for Charli or 1 Martin Place?</td><td>A neutral premium palette ships by default; brand is a token swap if assets arrive by Monday.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span>Charli Proof of Value · 1 Martin Place</span>
+    <span>Demonstration environment</span>
+  </footer>
+
+</div>
