@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Charli — after-hours palette.
+ *
+ * The demo is set at 7pm in a Sydney tower, so the interface commits to a
+ * single dark visual world: low-light slate ground, warm brass accents, cream
+ * ink. Deliberately single-theme, and every colour is painted explicitly so it
+ * holds on either host background.
+ */
+:root {
+  --ground: #101319;
+  --surface: #191D26;
+  --sunk: #22262F;
+  --raised: #2A2F3A;
+  --ink: #EEEBE4;
+  --muted: #A3A9B5;
+  --faint: #757C89;
+  --hairline: #282D37;
+  --rule: #3A404C;
+  --brass: #D3A25E;
+  --brass-dim: #8C6A38;
+  --ok: #6FB894;
+  --warn: #D9A45C;
+  --crit: #E08C7C;
+
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--ground);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--brass-dim);
+  color: var(--ink);
+}
+
+/* Thin, unobtrusive scrollbars — the conversation should feel like paper. */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: 4px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.32s cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+.dot {
+  animation: pulse-dot 1.3s ease-in-out infinite;
+}
+.dot:nth-child(2) { animation-delay: 0.18s; }
+.dot:nth-child(3) { animation-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .dot {
+    animation: none;
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "charli-pov",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "golden": "tsx harness/golden.ts",
+    "golden:live": "CHARLI_ENGINE=live tsx harness/golden.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.118.0",
+    "next": "^16.3.1",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "autoprefixer": "^10.4.20",
+    "playwright": "^1.62.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

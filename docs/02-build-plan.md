@@ -1,13 +1,38 @@
 # Charli PoV — Build Plan
 
-Target: client demo in the week of **Mon 24 Aug 2026**. Plan assumes demo **Wed 26 Aug**,
-with everything frozen end of **Tue 25 Aug**. Today is **Wed 19 Aug**.
+**Compressed to two days at the client's request.** Day 1 (Wed 19 Aug) is built and in
+the repo; Day 2 (Thu 20 Aug) is polish, live-engine tuning, deploy and dry runs. Demo
+from Fri 20 Aug onwards.
 
-Effort: **1 senior full-stack engineer, 5 working days**, plus ~half a day of design
-polish and half a day of content authoring. Nothing here needs a second engineer; if one
-is available, the parallel split is noted in §7.
+Effort: **1 senior full-stack engineer, 2 working days.** What was cut to fit, and what
+was kept, is set out in §0.
 
 ---
+
+## 0. What the two-day compression changed
+
+Kept in full — these are what the demo is judged on:
+
+- The hero journey, five turns, matching the brief's own reference numbers.
+- All 17 prepared asks and all 11 supporting prompts.
+- All four escalation tiers with byte-identical safety copy.
+- The presenter trace panel, all eleven fields.
+- The static configuration view.
+- The golden transcript harness — this got *more* important, not less: with less time to
+  hand-test, automated evidence is the only way to know the acceptance criteria hold.
+
+Cut or reduced, deliberately:
+
+| Item | Decision |
+|---|---|
+| Design polish | One pass, not two. The palette and type system are committed; there is no second visual iteration. |
+| Guidance cards | Kept, but as static step lists rather than illustrated route cards. No imagery to produce. |
+| Second dry run | Compressed to two runs on Day 2 rather than staged rehearsals across two days. |
+| Recommendation sign-off | Content authored now and sent for sign-off in parallel with the build, rather than gated before it. |
+| Live-engine tuning | Deferred to Day 2, because it needs an API key this environment does not have. |
+
+Nothing in the brief's scope was dropped. The compression came out of iteration count and
+polish, not coverage — that was the only safe place to take it from.
 
 ## 1. Shape of the thing we are building
 
@@ -35,11 +60,11 @@ One Next.js application. Three routes. No database, no auth, no integrations.
 ### Stack
 | Layer | Choice | Why |
 |---|---|---|
-| App | **Next.js 15 (App Router) + TypeScript** | one deployable serving UI + agent route; no separate backend to host |
-| UI | **Tailwind + shadcn/ui**, Framer Motion for card entrances | premium look fast; motion is what makes a demo feel expensive |
-| Model | **`claude-opus-5`**, adaptive thinking, streaming | strongest multi-intent parsing and slot-filling; adaptive thinking handles the 4-intent hero utterance without prompt gymnastics |
+| App | **Next.js 16 (App Router) + TypeScript** | one deployable serving UI + agent route; no separate backend to host |
+| UI | **Tailwind**, CSS keyframes for card entrances | premium look without a component-library dependency; motion is what makes a demo feel expensive, and `prefers-reduced-motion` is respected |
+| Model | **`claude-opus-5`**, adaptive thinking, streaming, prompt-cached system prefix | strongest multi-intent parsing and slot-filling; adaptive thinking handles the 4-intent hero utterance without prompt gymnastics |
 | Transport | SSE from a Next route handler | lets us interleave `text`, `tool`, and `trace` events in one stream, so the trace panel fills live as Charli works |
-| State | in-memory per browser session (React context) | L21 excludes tenant data; nothing to persist |
+| State | in the browser, posted back each turn | L21 excludes tenant data; there is no server-side store at all |
 | Data | static TypeScript modules | L179 mandates static/mock only |
 | Deploy | **Vercel** preview URL + local build as backup | one URL to share; local build removes venue-wifi risk |
 
@@ -210,24 +235,21 @@ every factual answer.
 
 ---
 
-## 7. Day-by-day plan
+## 7. Two-day plan
 
-| Day | Date | Deliverable at end of day |
+| Day | Date | Deliverable |
 |---|---|---|
-| **1** | Wed 19 Aug | Repo scaffolded. All five config/data modules populated from the BRD tables. System prompt v1. `/api/charli` streaming with `record_trace` + `escalate`. Plain chat answers the five knowledge questions (L74, L79, L80) end to end. |
-| **2** | Thu 20 Aug | `find_spaces` + `create_booking` with real availability logic; `submit_service_request` generic handler across all services; `lookup_request_status` on seeded cases. All four reference families issuing. Golden harness v1 green on the 17 prepared asks. **Content pack sent to client for sign-off.** |
-| **3** | Fri 21 Aug | Hero journey tuned to 5 turns and locked. Trace panel complete with all 11 fields. Escalation tiers verified byte-identical. UI polish pass 1: cards, chips, motion, footer. |
-| **4** | Mon 24 Aug | `/presenter/config` static view. Guidance and Recommendation cards with final content. Rails mode. Deployed to Vercel. Full golden run green. |
-| **5** | Tue 25 Aug | Two internal dry runs end to end. Fix list closed. **Feature freeze at 4pm.** Run-of-show rehearsed, backup recording made, laptop and offline build prepared. |
-| — | Wed 26 Aug | **Demo.** Day held as contingency if the date moves earlier. |
+| **1** | Wed 19 Aug | **Done and committed.** Five config/data modules from the brief's tables. Six-tool agent surface with forced tracing and deterministic safety copy. Live engine (Claude Opus 5, streaming, prompt-cached) and deterministic engine. Tenant chat with seven card types, presenter trace panel, static configuration view. Golden harness: 88 checks, all passing. Production build clean, driven end to end in a real browser. |
+| **2** | Thu 20 Aug | Live-engine tuning against the golden suite with a real API key (the one thing that cannot be done without one). Content sign-off pass. UI polish. Deploy. Two dry runs. Backup recording. Freeze. |
 
-Sat/Sun deliberately unallocated — that is the buffer, not the plan.
+Two things carry over into Day 2 by necessity rather than choice:
 
-**If a second engineer is available**, the clean split is: Engineer A owns the agent route,
-tools, prompt and golden harness (Days 1–3); Engineer B owns the tenant UI, cards, trace
-panel and config view (Days 1–3). They converge on Day 3 for hero-journey tuning.
-
----
+1. **The live engine has not been exercised against the API** — there is no key in this
+   environment. The code path is written, typechecked and built, and `npm run golden:live`
+   drives the whole acceptance suite through it. That is the first thing to run tomorrow,
+   and it is the only item with genuine unknowns left in it.
+2. **Recommendation content is unsigned** — it is authored and plausible, but the client
+   has not seen it.
 
 ## 8. Run-of-show for the demo (12 minutes, then questions)
 
