@@ -251,17 +251,40 @@
 <div class="wrap">
 
   <header class="mast">
-    <p class="eyebrow">Proof of Value · Build Plan</p>
+    <p class="eyebrow">Proof of Value · Day 1 built</p>
     <h1>Charli at 1 Martin Place</h1>
     <p class="standfirst">An after-hours digital concierge. One conversational front door for tenants when the concierge desk is dark — answering, coordinating, transacting and handing off.</p>
     <dl class="facts">
-      <div class="fact"><dt>Demo</dt><dd>Wed 26 Aug 2026</dd></div>
-      <div class="fact"><dt>Freeze</dt><dd>Tue 25 Aug, 4pm</dd></div>
-      <div class="fact"><dt>Build</dt><dd>5 working days</dd></div>
-      <div class="fact"><dt>Team</dt><dd>1 full-stack engineer</dd></div>
+      <div class="fact"><dt>Build</dt><dd>2 working days</dd></div>
+      <div class="fact"><dt>Day 1</dt><dd>Wed 19 Aug — built</dd></div>
+      <div class="fact"><dt>Day 2</dt><dd>Thu 20 Aug — polish, deploy</dd></div>
+      <div class="fact"><dt>Acceptance</dt><dd>88 / 88 checks</dd></div>
       <div class="fact"><dt>Source</dt><dd>Charli Demo Pack, 184 lines</dd></div>
     </dl>
   </header>
+
+  <section>
+    <h2>Status</h2>
+    <p class="lede">Compressed to two days at the client&rsquo;s request. Day 1 is built, committed and driven end to end in a browser; Day 2 is live-engine tuning against a real API key, content sign-off, deploy and dry runs.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Standing now</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td>Five config modules from the brief&rsquo;s own tables</td><td><span class="pill low">Done</span></td></tr>
+          <tr><td>Six-tool agent surface, forced tracing, deterministic safety copy</td><td><span class="pill low">Done</span></td></tr>
+          <tr><td>Live engine — Claude Opus 5, streaming, prompt-cached prefix</td><td><span class="pill med">Written, untested against the API</span></td></tr>
+          <tr><td>Deterministic engine — hero journey pinned to five turns, stage insurance</td><td><span class="pill low">Done</span></td></tr>
+          <tr><td>Tenant chat, seven card types, service-menu chips</td><td><span class="pill low">Done</span></td></tr>
+          <tr><td>Presenter trace panel, all eleven fields</td><td><span class="pill low">Done</span></td></tr>
+          <tr><td>Static presenter configuration view</td><td><span class="pill low">Done</span></td></tr>
+          <tr><td>Golden transcript harness — 88 checks, 31 criteria</td><td><span class="pill low">All passing</span></td></tr>
+          <tr><td>Recommendation content sign-off</td><td><span class="pill med">Authored, unsigned</span></td></tr>
+          <tr><td>Deploy, dry runs, backup recording</td><td><span class="pill med">Day 2</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The one item with genuine unknowns left in it is the live engine: there was no API key in the build environment, so it is written, typechecked and built but not yet exercised against Claude. <code>npm run golden:live</code> drives the entire acceptance suite through it — that is the first task on Day 2.</p>
+  </section>
 
   <section>
     <h2>What they actually asked for</h2>
@@ -393,26 +416,29 @@
   </section>
 
   <section>
-    <h2>Schedule</h2>
-    <p class="lede">Five working days with the weekend held clear as buffer, not as plan. Everything the demo depends on is standing by Friday; Monday is polish and insurance.</p>
+    <h2>Two-day schedule</h2>
+    <p class="lede">Nothing in the brief&rsquo;s scope was dropped to fit two days. The compression came out of iteration count and polish — the only safe place to take it from.</p>
     <div class="scroll">
       <table>
-        <thead><tr><th>Day</th><th>Date</th><th>Standing at end of day</th></tr></thead>
+        <thead><tr><th>Day</th><th>Date</th><th>Work</th></tr></thead>
         <tbody>
-          <tr><td class="num">1</td><td class="num">Wed 19 Aug</td><td>Scaffold, all five data modules from the brief’s tables, system prompt v1, streaming endpoint with tracing and escalation. Knowledge questions answered end to end.</td></tr>
-          <tr><td class="num">2</td><td class="num">Thu 20 Aug</td><td>Booking flow, generic service handler, status lookup. All four reference families issuing. Golden suite green on the 17 prepared asks. <strong>Content pack sent for sign-off.</strong></td></tr>
-          <tr><td class="num">3</td><td class="num">Fri 21 Aug</td><td>Hero journey tuned to five turns and locked. Trace panel complete. Escalation copy verified. First UI polish pass.</td></tr>
-          <tr><td class="num">4</td><td class="num">Mon 24 Aug</td><td>Configuration view, guidance and recommendation cards with final content, rails mode, deployed. Full golden run green.</td></tr>
-          <tr><td class="num">5</td><td class="num">Tue 25 Aug</td><td>Two dry runs, fix list closed, <strong>freeze at 4pm</strong>, run-of-show rehearsed, backup recording made, offline build prepared.</td></tr>
+          <tr><td class="num">1</td><td class="num">Wed 19 Aug</td><td>Data layer, agent and both engines, tenant chat, trace panel, configuration view, golden harness. Production build clean and driven in a real browser.</td></tr>
+          <tr><td class="num">2</td><td class="num">Thu 20 Aug</td><td>Live-engine tuning against the golden suite with a real key, content sign-off, UI polish, deploy, two dry runs, backup recording, freeze.</td></tr>
         </tbody>
       </table>
     </div>
-    <h3>Four cheap insurances</h3>
+    <h3>What was cut, deliberately</h3>
     <ul class="plain">
-      <li><strong>Golden transcript harness</strong> — replays every prompt in the client’s pack and asserts routes, reference formats, verbatim safety copy, turn counts and the absence of hedging language. Runs the morning of the demo.</li>
-      <li><strong>Rails mode</strong> — deterministic canned playback of the hero journey and the top eight prompts, no API calls. If the venue network drops mid-demo, the presenter switches and nobody in the room knows.</li>
-      <li><strong>Presenter reset</strong> — clears the session and re-seeds references, so the hero journey runs cleanly twice. It will need to.</li>
-      <li><strong>Recorded backup</strong> — four minutes of hero journey and one escalation, on the laptop. Twenty minutes to make.</li>
+      <li><strong>Design polish</strong> — one pass, not two. The palette and type system are committed; no second visual iteration.</li>
+      <li><strong>Guidance cards</strong> — static step lists rather than illustrated route cards. No imagery to produce, and the brief excludes live maps anyway.</li>
+      <li><strong>Rehearsal</strong> — two dry runs on Day 2 rather than staged rehearsals across two days.</li>
+      <li><strong>Content sign-off</strong> — recommendations authored now and sent for approval in parallel with the build, rather than gating it.</li>
+    </ul>
+    <h3>Insurance that survived the cut</h3>
+    <ul class="plain">
+      <li><strong>Golden transcript harness</strong> — this got <em>more</em> important, not less. With less time to hand-test, automated evidence is the only way to know the acceptance criteria hold. It runs without an API key, so it also runs in CI and on the morning of the demo.</li>
+      <li><strong>Deterministic engine</strong> — kept, because it is the same code path that makes the harness runnable and the demo network-proof. One build, two jobs.</li>
+      <li><strong>Presenter reset</strong> — the hero journey runs cleanly twice. It will need to.</li>
     </ul>
   </section>
 
@@ -456,11 +482,12 @@
         <tbody>
           <tr><td>Model paraphrases the emergency script</td><td><span class="pill high">High if generated</span></td><td>Copy deterministic in <code>escalate</code>; asserted byte-identical</td></tr>
           <tr><td>Charli hedges — “in a real system I’d…”</td><td><span class="pill med">Medium</span></td><td>Hard negative prompt rule; test greps for hedging language</td></tr>
-          <tr><td>Hero journey creeps past seven turns</td><td><span class="pill med">Medium</span></td><td>Turn map locked Friday; build fails on turn 8</td></tr>
+          <tr><td>Hero journey creeps past seven turns</td><td><span class="pill med">Medium</span></td><td>Turn map locked; build fails on turn 8</td></tr>
           <tr><td>Venue network or API hiccup mid-demo</td><td><span class="pill med">Medium</span></td><td>Rails mode, local build, recorded backup</td></tr>
-          <tr><td>Recommendation content not signed off in time</td><td><span class="pill med">Medium</span></td><td>Sent Thursday; clearly-marked demo content is permitted by the brief</td></tr>
+          <tr><td>Recommendation content not signed off in time</td><td><span class="pill med">Medium</span></td><td>Sent Day 2; clearly-marked demo content is permitted by the brief</td></tr>
           <tr><td>In-room scope creep</td><td><span class="pill high">High</span></td><td>The not-building list is agreed in advance</td></tr>
-          <tr><td>Demo brought forward to Monday</td><td><span class="pill low">Low</span></td><td>Days 1–3 already carry the hero journey, trace panel and escalations</td></tr>
+          <tr><td>Live engine behaves differently from the deterministic one</td><td><span class="pill med">Medium</span></td><td>The acceptance suite runs through both — <code>npm run golden:live</code> is the first Day 2 task</td></tr>
+          <tr><td>Two days leaves no slack for a late surprise</td><td><span class="pill med">Medium</span></td><td>Everything the demo is judged on is already standing; Day 2 is polish, and the deterministic engine is a working demo on its own</td></tr>
         </tbody>
       </table>
     </div>
@@ -475,10 +502,10 @@
         <tbody>
           <tr><td>The hero journey needs a room for six at 08:00, but Pitt Collaboration Room opens at 09:00 and Martin Boardroom is blocked until 10:00 — so the only alternative to Park Meeting Room is The Forum, which requires approval. Confirm, or shift Pitt’s window?</td><td>We offer The Forum and surface the approval rule — it demonstrates rule handling as a bonus.</td></tr>
           <tr><td>“I smell smoke in the corridor” — emergency tier, or urgent building issue?</td><td>Emergency tier. The 000 script first, then we ask for the level to complete the location.</td></tr>
-          <tr><td>The local-recommendation set is referenced but not supplied.</td><td>We author three per category as Sydney CBD demo content and send it Thursday for sign-off.</td></tr>
+          <tr><td>The local-recommendation set is referenced but not supplied.</td><td>Three per category authored as Sydney CBD demo content, in the build now, going for sign-off on Day 2.</td></tr>
           <tr><td>Only one pre-seeded status case is given.</td><td>We seed four — lighting, HVAC, access pass, cleaning — so a status question lands from any angle.</td></tr>
           <tr><td>“One question at a time” against the seven-turn ceiling.</td><td>One question per turn, paired with the previous step’s result. Satisfies both; lands the journey in five.</td></tr>
-          <tr><td>Brand assets for Charli or 1 Martin Place?</td><td>A neutral premium palette ships by default; brand is a token swap if assets arrive by Monday.</td></tr>
+          <tr><td>Brand assets for Charli or 1 Martin Place?</td><td>A dark after-hours palette ships by default; brand is a token swap if assets arrive on Day 2.</td></tr>
         </tbody>
       </table>
     </div>
